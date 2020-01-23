@@ -1,0 +1,4 @@
+- Go to public directory
+- Run web server using following command
+- php -S localhost:8000
+- Open http://localhost:8000/user/index?id=12&name=jignesh

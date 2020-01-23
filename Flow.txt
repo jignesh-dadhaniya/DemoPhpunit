@@ -1,0 +1,81 @@
+FrontController {
+	construct($router, $dispatcher);
+
+	run($request, $response) {
+		$route = $this->router->route($request);
+		$this->dispatcher->dispatch($route, $request, $response);
+	}
+}
+
+class Request {
+	
+	construct($uri, $params);
+
+	addParam($key, $value);
+
+	getParam($key);
+
+	getUri() {
+		return $this->uri;
+	}
+}
+
+Response {
+	
+	addHeader() {
+	}
+
+	setHeader() {
+	}
+
+	send() {
+		if (!headers_sent()) {
+		      foreach($this->headers as $header) {
+			header("$this->version $header", true);
+		      }
+		} 
+	}
+}
+
+Dispatcher {
+	dispatch($route, $request, $response) {
+		$route->createController()->exectute($request, $response);
+	}
+}
+
+Route {
+	public function __construct($path, $controllerClass) {
+	    $this->path = $path;
+	    $this->controllerClass = $controllerClass;
+	}
+	 
+	public function match($request) {
+	    return $this->path === $request->getUri();
+	}
+	 
+	public function createController() {
+	   return new $this->controllerClass;
+	}
+}
+
+Router {
+	addRoutes(array $routes) {
+		$this->routes = $routes;
+	}
+
+	addRoute($route) {
+		$this->routes[] = $route;
+	}
+
+	route($request) {
+		foreach ($this->routes as $route) {
+  		    if ($route->match($request))
+			return $route;
+		}
+
+		return false;
+	}
+}
+
+index.php
+
