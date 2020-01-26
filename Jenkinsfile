@@ -20,7 +20,7 @@ pipeline {
         }
 	stage("PHPUnit") {
 		steps {
-            		sh 'vendor/bin/phpunit --bootstrap vendor/autoload.php tests/simpleaddTest.php --configuration phpunit-coverage.xml'
+            		sh 'vendor/bin/phpunit'
 		}
         }
 
