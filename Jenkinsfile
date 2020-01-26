@@ -14,7 +14,9 @@ pipeline {
                 }
 	}
 	stage('Composer Install') {
-            composer install
+		steps {
+            		composer install
+		}
         }
         stage('Three') {
                 when {
