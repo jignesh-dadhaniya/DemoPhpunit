@@ -18,6 +18,22 @@ pipeline {
             		sh 'composer install'
 		}
         }
+	stage("PHPUnit") {
+            sh 'vendor/bin/phpunit --bootstrap vendor/autoload.php tests/simpleaddTest.php --configuration phpunit-coverage.xml'
+        }
+
+        stage("Publish Coverage") {
+            publishHTML (target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'build/coverage',
+                reportFiles: 'index.html',
+                reportName: "Coverage Report"
+
+            ])
+        }
+
         stage('Three') {
                 when {
                         not {
