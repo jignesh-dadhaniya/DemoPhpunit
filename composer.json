@@ -2,7 +2,7 @@
     "require-dev": {
         "phpstan/phpstan": "^0.7.0@dev",
         "behat/behat": "^3.2@dev",
-        "phpunit/phpunit": "^6.3@dev",
+        "phpunit/phpunit": "^6.5.9",
         "phpspec/phpspec": "^3.0@dev",
         "theseer/phpdox": "dev-master",
         "sebastian/phpcpd": "^3.0@dev",
