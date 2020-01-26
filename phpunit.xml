@@ -6,9 +6,8 @@
          beStrictAboutCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTodoAnnotatedTests="true"
-         verbose="true"
-         name="phpunit">
-    <testsuite>
+         verbose="true">
+    <testsuite name="phpunit">
         <directory suffix="Test.php">tests</directory>
     </testsuite>
 
