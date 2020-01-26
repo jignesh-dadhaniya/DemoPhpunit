@@ -7,12 +7,15 @@ pipeline {
 			
                 }
         }
-	    stage('Two'){
+	stage('Two') {
 		    
 		steps {
 			input('Do you want to proceed?')
+                }
+	}
+	stage('Composer Install') {
+            sh 'composer install'
         }
-	    }
         stage('Three') {
                 when {
                         not {
