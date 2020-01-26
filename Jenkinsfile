@@ -15,7 +15,7 @@ pipeline {
 	}
 	stage('Composer Install') {
 		steps {
-            		composer install
+            		sh 'composer install'
 		}
         }
         stage('Three') {
