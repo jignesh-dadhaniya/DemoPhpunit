@@ -19,19 +19,23 @@ pipeline {
 		}
         }
 	stage("PHPUnit") {
-            sh 'vendor/bin/phpunit --bootstrap vendor/autoload.php tests/simpleaddTest.php --configuration phpunit-coverage.xml'
+		steps {
+            		sh 'vendor/bin/phpunit --bootstrap vendor/autoload.php tests/simpleaddTest.php --configuration phpunit-coverage.xml'
+		}
         }
 
         stage("Publish Coverage") {
-            publishHTML (target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'build/coverage',
-                reportFiles: 'index.html',
-                reportName: "Coverage Report"
+		steps {
+		    publishHTML (target: [
+			allowMissing: false,
+			alwaysLinkToLastBuild: false,
+			keepAll: true,
+			reportDir: 'build/coverage',
+			reportFiles: 'index.html',
+			reportName: "Coverage Report"
 
-            ])
+		    ])
+		}
         }
 
         stage('Three') {
